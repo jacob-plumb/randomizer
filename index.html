@@ -1,0 +1,76 @@
+<html>
+
+<head>
+	<title>Essay Topic Randomizer</title>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	<script>
+		var style = [
+		"persuasive essay",
+		"narrative essay",
+		"expository essay",
+		"descriptive essay",
+		"rap",
+		"poem",
+		];
+		
+		var topic = [
+		"dogs",
+		"nuclear fission",
+		"table-top roleplaying games",
+		"microtransactions",
+		"immigration",
+		"property rights",
+		"constitutionalism",
+		"soundcloud rappers"
+		]
+		
+		function randomStyle(){
+			var chosenStyle = style[(parseInt(Math.random() * style.length))];
+			return chosenStyle;
+		}
+		
+		function randomTopic(){
+			var chosenTopic = topic[(parseInt(Math.random() * topic.length))];
+			return chosenTopic;
+		}
+		
+		$(document).ready(function() {
+			$("#style").text(randomStyle());
+			$("#topic").text(randomTopic());
+		});
+	</script>
+</head>
+
+<body>
+
+	<div id="main">
+
+	
+		<!--style: argumentative essay, rap, poem, etc.-->
+		<!--topic: dogs, nuclear fission, etc.-->
+
+		<div id = "styleLabel">
+			<p>You are to write a(n):</p>
+		</div>
+		
+		<div id = "style">
+			<p>essay</p>
+		</div>
+
+		<div id = "topicLabel">
+			<p>about</p>
+		</div>
+		
+		<div id = "topic">
+			<p>something</p>
+		</div>
+
+	</div>
+</body>
+
+</html>
