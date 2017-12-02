@@ -8,43 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	
-	<script>
-		var style = [
-		"persuasive essay",
-		"narrative essay",
-		"expository essay",
-		"descriptive essay",
-		"rap",
-		"poem",
-		];
-		
-		var topic = [
-		"dogs",
-		"nuclear fission",
-		"table-top roleplaying games",
-		"microtransactions",
-		"immigration",
-		"property rights",
-		"constitutionalism",
-		"soundcloud rappers"
-		]
-		
-		function randomStyle(){
-			var chosenStyle = style[(parseInt(Math.random() * style.length))];
-			return chosenStyle;
-		}
-		
-		function randomTopic(){
-			var chosenTopic = topic[(parseInt(Math.random() * topic.length))];
-			return chosenTopic;
-		}
-		
-		$(document).ready(function() {
-			$("#style").text(randomStyle());
-			$("#topic").text(randomTopic());
-		});
-	</script>
+	<script src="script.js"></script>
 </head>
 
 <body>
