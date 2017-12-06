@@ -9,8 +9,8 @@ body {
 }
 
 #sourceLink{
-	margin-top: 50px;
-	font-size: 10px;
+	margin-top: 80px;
+	font-size: 20px;
 }
 
 #randomize{
@@ -33,4 +33,8 @@ body {
 	margin-top: 10px;
 	background-color: #1a651a;
 	color: #ffffff;
+}
+
+#changelog{
+	font-size: 20px;
 }
