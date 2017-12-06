@@ -34,6 +34,21 @@ var topic = [
 	"your ideal career path",
 	"your pastimes"
 ]
+
+var targetAudience = [
+	"children",
+	"your congressman",
+	"middle-aged mothers",
+	"gamers",
+	"teachers",
+	"your boss",
+	"young adults",
+	"teenagers",
+	"conservatives",
+	"liberals",
+	"foreigners",
+	"your grandmother"
+]
 		
 function randomStyle(){
 	var chosenStyle = style[(parseInt(Math.random() * style.length))];
@@ -44,8 +59,36 @@ function randomTopic(){
 	var chosenTopic = topic[(parseInt(Math.random() * topic.length))];
 	return chosenTopic;
 }
-		
-$(document).ready(function() {
+
+function randomTargetAudience(){
+	var chosenTargetAudience = targetAudience[(parseInt(Math.random() * targetAudience.length))]
+	return chosenTargetAudience;
+}
+
+function randomizeAll(){
 	$("#style").text(randomStyle());
 	$("#topic").text(randomTopic());
+	$("#targetAudience").text(randomTargetAudience());
+}
+
+function toggleTargetAudience(){
+	var x = document.getElementById("targetAudienceBigDiv");
+	if (x.style.display === "none"){
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+}
+		
+$(document).ready(function() {
+	randomizeAll();
+	document.getElementById("targetAudienceBigDiv").style.display = "none";
+	
+	$("#randomize").click(function() {
+		randomizeAll();
+	});
+	
+	$("#toggle").click(function() {
+		toggleTargetAudience();
+	});
 });
