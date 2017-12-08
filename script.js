@@ -189,6 +189,50 @@ var targetAudience = [
 	"deaf people"
 	
 ]
+
+var tone = [
+	"absurd",
+	"accusatory",
+	"admiring",
+	"aggressive",
+	"ambivalent",
+	"amused",
+	"angry",
+	"apathetic",
+	"appreciative",
+	"arrogant",
+	"assertive",
+	"awestruck",
+	"belligerent",
+	"bitter",
+	"callouse",
+	"candid",
+	"caustic",
+	"cautionary",
+	"comic",
+	"compassionate",
+	"complex",
+	"concerend",
+	"condescending",
+	"confused",
+	"contemptuous",
+	"critical",
+	"cruel",
+	"curious",
+	"cynical",
+	"defensive",
+	"defiant",
+	"demeaning",
+	"derisive",
+	"detached",
+	"dignified",
+	"diplomatic",
+	"disapproving",
+	"disparaging",
+	"dispassionate",
+	"distressing",
+	"docile",
+]
 		
 function randomStyle(){
 	var chosenStyle = style[(parseInt(Math.random() * style.length))];
@@ -219,10 +263,20 @@ function toggleTargetAudience(){
 		x.style.display = "none";
 	}
 }
+
+function toggleTone(){
+	var x = document.getElementById("toneBigDiv");
+	if (x.style.display === "none"){
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+}
 		
 $(document).ready(function() {
 	randomizeAll();
 	document.getElementById("targetAudienceBigDiv").style.display = "none";
+	document.getElementById("toneBigDiv").style.display = "none";
 	
 	$("#randomize").click(function() {
 		randomizeAll();
@@ -230,5 +284,9 @@ $(document).ready(function() {
 	
 	$("#toggle").click(function() {
 		toggleTargetAudience();
+	});
+	
+	$("#toggleTone").click(function() {
+		toggleTone();
 	});
 });

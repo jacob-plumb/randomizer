@@ -35,6 +35,17 @@ body {
 	color: #ffffff;
 }
 
+#toggleTone{
+	border-radius: 8px;
+	font-family: monospace, Helvetica;
+	font-size: 20px;
+	width: 200px;
+	height: 75px;
+	margin-top: 10px;
+	background-color: #1a651a;
+	color: #ffffff;
+}
+
 #changelog{
 	font-size: 20px;
 }
