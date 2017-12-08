@@ -95,7 +95,7 @@ var topic = [
 	"school uniforms",
 	"taxation",
 	"technological dependence",
-	"marketing to childrend",
+	"marketing to children",
 	"Congressional term limits",
 	"beauty pageants",
 	"prisoners having the vote",
