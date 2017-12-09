@@ -232,6 +232,89 @@ var tone = [
 	"dispassionate",
 	"distressing",
 	"docile",
+	"earnest",
+	"egotistical",
+	"encouraging",
+	"enthusiastic",
+	"evasive",
+	"excited",
+	"facetious",
+	"farcical",
+	"forceful",
+	"formal",
+	"frustrated",
+	"gentle",
+	"grim",
+	"hard",
+	"humble",
+	"humorous",
+	"hypercritical",
+	"impartial",
+	"impassioned",
+	"imploring",
+	"impressionable",
+	"inane",
+	"incensed",
+	"incredulous",
+	"indignant",
+	"informative",
+	"intense",
+	"intimate",
+	"ironic",
+	"irreverent",
+	"jaded",
+	"joyful",
+	"judgemental",
+	"laudatory",
+	"light-hearted",
+	"loving",
+	"macabre",
+	"malicious",
+	"mean-spirited",
+	"mocking",
+	"mourning",
+	"narcissistic",
+	"nasty",
+	"negative",
+	"nostalgic",
+	"objective",
+	"optimistic",
+	"outraged",
+	"outspoken",
+	"pathetic",
+	"pathetic",
+	"patronising",
+	"pensive",
+	"persuasive",
+	"philosophical",
+	"playful",
+	"pragmatic",
+	"regretful",
+	"resentful",
+	"resigned",
+	"righteous",
+	"satirical",
+	"scathing",
+	"scornful",
+	"sensationalistic",
+	"sentimental",
+	"sincere",
+	"sceptical",
+	"solemn",
+	"submissive",
+	"sulking",
+	"sympathetic",
+	"thoughtful",
+	"tolerant",
+	"unassuming",
+	"uneasy",
+	"urgent",
+	"vindictive",
+	"virtuous",
+	"whimsical",
+	"witty",
+	"worried"
+	
 ]
 		
 function randomStyle(){
@@ -245,14 +328,20 @@ function randomTopic(){
 }
 
 function randomTargetAudience(){
-	var chosenTargetAudience = targetAudience[(parseInt(Math.random() * targetAudience.length))]
+	var chosenTargetAudience = targetAudience[(parseInt(Math.random() * targetAudience.length))];
 	return chosenTargetAudience;
+}
+
+function randomTone(){
+	var chosenTone = tone[(parseInt(Math.random() * tone.length))];
+	return chosenTone;
 }
 
 function randomizeAll(){
 	$("#style").text(randomStyle());
 	$("#topic").text(randomTopic());
 	$("#targetAudience").text(randomTargetAudience());
+	$("#tone").text(randomTone());
 }
 
 function toggleTargetAudience(){
