@@ -95,7 +95,7 @@ var topic = [
 	"school uniforms",
 	"taxation",
 	"technological dependence",
-	"marketing to childrend",
+	"marketing to children",
 	"Congressional term limits",
 	"beauty pageants",
 	"prisoners having the vote",
@@ -189,6 +189,133 @@ var targetAudience = [
 	"deaf people"
 	
 ]
+
+var tone = [
+	"absurd",
+	"accusatory",
+	"admiring",
+	"aggressive",
+	"ambivalent",
+	"amused",
+	"angry",
+	"apathetic",
+	"appreciative",
+	"arrogant",
+	"assertive",
+	"awestruck",
+	"belligerent",
+	"bitter",
+	"callouse",
+	"candid",
+	"caustic",
+	"cautionary",
+	"comic",
+	"compassionate",
+	"complex",
+	"concerend",
+	"condescending",
+	"confused",
+	"contemptuous",
+	"critical",
+	"cruel",
+	"curious",
+	"cynical",
+	"defensive",
+	"defiant",
+	"demeaning",
+	"derisive",
+	"detached",
+	"dignified",
+	"diplomatic",
+	"disapproving",
+	"disparaging",
+	"dispassionate",
+	"distressing",
+	"docile",
+	"earnest",
+	"egotistical",
+	"encouraging",
+	"enthusiastic",
+	"evasive",
+	"excited",
+	"facetious",
+	"farcical",
+	"forceful",
+	"formal",
+	"frustrated",
+	"gentle",
+	"grim",
+	"hard",
+	"humble",
+	"humorous",
+	"hypercritical",
+	"impartial",
+	"impassioned",
+	"imploring",
+	"impressionable",
+	"inane",
+	"incensed",
+	"incredulous",
+	"indignant",
+	"informative",
+	"intense",
+	"intimate",
+	"ironic",
+	"irreverent",
+	"jaded",
+	"joyful",
+	"judgemental",
+	"laudatory",
+	"light-hearted",
+	"loving",
+	"macabre",
+	"malicious",
+	"mean-spirited",
+	"mocking",
+	"mourning",
+	"narcissistic",
+	"nasty",
+	"negative",
+	"nostalgic",
+	"objective",
+	"optimistic",
+	"outraged",
+	"outspoken",
+	"pathetic",
+	"pathetic",
+	"patronising",
+	"pensive",
+	"persuasive",
+	"philosophical",
+	"playful",
+	"pragmatic",
+	"regretful",
+	"resentful",
+	"resigned",
+	"righteous",
+	"satirical",
+	"scathing",
+	"scornful",
+	"sensationalistic",
+	"sentimental",
+	"sincere",
+	"sceptical",
+	"solemn",
+	"submissive",
+	"sulking",
+	"sympathetic",
+	"thoughtful",
+	"tolerant",
+	"unassuming",
+	"uneasy",
+	"urgent",
+	"vindictive",
+	"virtuous",
+	"whimsical",
+	"witty",
+	"worried"
+	
+]
 		
 function randomStyle(){
 	var chosenStyle = style[(parseInt(Math.random() * style.length))];
@@ -201,14 +328,20 @@ function randomTopic(){
 }
 
 function randomTargetAudience(){
-	var chosenTargetAudience = targetAudience[(parseInt(Math.random() * targetAudience.length))]
+	var chosenTargetAudience = targetAudience[(parseInt(Math.random() * targetAudience.length))];
 	return chosenTargetAudience;
+}
+
+function randomTone(){
+	var chosenTone = tone[(parseInt(Math.random() * tone.length))];
+	return chosenTone;
 }
 
 function randomizeAll(){
 	$("#style").text(randomStyle());
 	$("#topic").text(randomTopic());
 	$("#targetAudience").text(randomTargetAudience());
+	$("#tone").text(randomTone());
 }
 
 function toggleTargetAudience(){
@@ -219,10 +352,20 @@ function toggleTargetAudience(){
 		x.style.display = "none";
 	}
 }
+
+function toggleTone(){
+	var x = document.getElementById("toneBigDiv");
+	if (x.style.display === "none"){
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+}
 		
 $(document).ready(function() {
 	randomizeAll();
 	document.getElementById("targetAudienceBigDiv").style.display = "none";
+	document.getElementById("toneBigDiv").style.display = "none";
 	
 	$("#randomize").click(function() {
 		randomizeAll();
@@ -230,5 +373,9 @@ $(document).ready(function() {
 	
 	$("#toggle").click(function() {
 		toggleTargetAudience();
+	});
+	
+	$("#toggleTone").click(function() {
+		toggleTone();
 	});
 });
