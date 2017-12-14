@@ -319,6 +319,12 @@ var tone = [
 		
 function randomStyle(){
 	var chosenStyle = style[(parseInt(Math.random() * style.length))];
+	var firstLetter = chosenStyle.substring(0,1).toLowerCase();
+	if (firstLetter == "a" || firstLetter == "e" || firstLetter == "i" || firstLetter == "o" || firstLetter == "u"){
+		$("#styleLabel").text("You are to write an:");
+	} else {
+		$("#styleLabel").text("You are to write a:");
+	}
 	return chosenStyle;
 }
 		
@@ -334,6 +340,12 @@ function randomTargetAudience(){
 
 function randomTone(){
 	var chosenTone = tone[(parseInt(Math.random() * tone.length))];
+	var firstLetter = chosenTone.substring(0,1).toLowerCase();
+	if (firstLetter == "a" || firstLetter == "e" || firstLetter == "i" || firstLetter == "o" || firstLetter == "u"){
+		$("#toneLabel1").text("in an");
+	} else {
+		$("#toneLabel1").text("in a");
+	}
 	return chosenTone;
 }
 

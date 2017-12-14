@@ -5,12 +5,37 @@ body {
 	font-size: 30px;
 }
 
+#styleLabel {
+	margin-bottom: 20px;
+}
+
+#toneLabel1 {
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
 #main {
 }
 
 #sourceLink{
 	margin-top: 80px;
 	font-size: 20px;
+}
+
+#style {
+	font-weight: Bold;
+}
+
+#topic {
+	font-weight:Bold;
+}
+
+#targetAudience {
+	font-weight:Bold;
+}
+
+#tone {
+	font-weight:Bold;
 }
 
 #randomize{
