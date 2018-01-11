@@ -26,7 +26,7 @@ body {
 	width: 200px;
 	height: 75px;
 	margin-top: 50px;
-	background-color: #1a651a;
+	background-color: green;
 	color: #ffffff;
 }
 
@@ -37,7 +37,7 @@ body {
 	width: 200px;
 	height: 75px;
 	margin-top: 10px;
-	background-color: #1a651a;
+	background-color: red;
 	color: #ffffff;
 }
 
@@ -48,7 +48,7 @@ body {
 	width: 200px;
 	height: 75px;
 	margin-top: 10px;
-	background-color: #1a651a;
+	background-color: red;
 	color: #ffffff;
 }
 

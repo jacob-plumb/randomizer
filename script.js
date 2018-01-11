@@ -317,7 +317,7 @@ var toneList = [
 	
 ]
 
-var styleLabel = "You are to write a ";
+var styleLabel = "Write a ";
 var topicLabel = " about "
 var targetAudienceLabel = " written for ";
 var toneLabel1 = " in a "
@@ -330,15 +330,16 @@ var style;
 var topic;
 var audience;
 var tone;
+var sentence;
 
 function concatenateFull(){
 	style = randomStyle();
 	
 	var firstLetter = style.substring(0,1).toLowerCase();
 	if (firstLetter == "a" || firstLetter == "e" || firstLetter == "i" || firstLetter == "o" || firstLetter == "u"){
-		styleLabel = "You are to write an ";
+		styleLabel = "Write an ";
 	} else {
-		styleLabel = "You are to write a ";
+		styleLabel = "Write a ";
 	}
 	
 	topic = randomTopic();
@@ -354,6 +355,27 @@ function concatenateFull(){
 	}
 	
 	if (toneOn && audienceOn){
+		sentence = styleLabel.concat(style, topicLabel, topic, targetAudienceLabel, audience, toneLabel1, tone, toneLabel2);
+		$("#bigP").text(sentence);
+	}else if (audienceOn){
+		var addPeriod = ".";
+		var newAud = audience.concat(addPeriod);
+		sentence = styleLabel.concat(style, topicLabel, topic, targetAudienceLabel, newAud);
+		$("#bigP").text(sentence);
+	}else if (toneOn){
+		sentence = styleLabel.concat(style, topicLabel, topic, toneLabel1, tone, toneLabel2);
+		$("#bigP").text(sentence);
+	}else {
+		var addPeriod = ".";
+		var newTopic = topic.concat(addPeriod);
+		sentence = styleLabel.concat(style, topicLabel, newTopic);
+		$("#bigP").text(sentence);
+	}
+	
+}
+
+function concatenatePartial(){
+	if (toneOn && audienceOn){
 		$("#bigP").text(styleLabel.concat(style, topicLabel, topic, targetAudienceLabel, audience, toneLabel1, tone, toneLabel2));
 	}else if (audienceOn){
 		var addPeriod = ".";
@@ -366,7 +388,6 @@ function concatenateFull(){
 		var newTopic = topic.concat(addPeriod);
 		$("#bigP").text(styleLabel.concat(style, topicLabel, newTopic));
 	}
-	
 }
 		
 function randomStyle(){
@@ -404,22 +425,32 @@ function randomTone(){
 function toggleTargetAudience(){
 	if (audienceOn){
 		audienceOn = false;
+		$("#toggle").css('background-color', 'red');
+		$("#toggle").text("Target Audience Off");
 	}else {
 		audienceOn = true;
+		$("#toggle").css('background-color', 'green');
+		$("#toggle").text("Target Audience On");
 	}
 }
 
 function toggleTone(){
 	if (toneOn){
 		toneOn = false;
+		$("#toggleTone").css('background-color', 'red');
+		$("#toggleTone").text("Tone Off");
 	}else {
 		toneOn = true;
+		$("#toggleTone").css('background-color', 'green');
+		$("#toggleTone").text("Tone On");
 	}
-}
-		
+}	
 		
 //MAKE TOGGLE BUTTONS CHANGE COLORS
 $(document).ready(function() {
+	$("#toggle").text("Target Audience Off");
+	$("#toggleTone").text("Tone Off");
+	
 	concatenateFull();
 	
 	$("#randomize").click(function() {
@@ -428,11 +459,11 @@ $(document).ready(function() {
 	
 	$("#toggle").click(function() {
 		toggleTargetAudience();
-		concatenateFull();
+		concatenatePartial();
 	});
 	
 	$("#toggleTone").click(function() {
 		toggleTone();
-		concatenateFull();
+		concatenatePartial();
 	});
 });
