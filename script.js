@@ -1,4 +1,4 @@
-var style = [
+var styleList = [
 	"persuasive essay",
 	"narrative essay",
 	"expository essay",
@@ -14,7 +14,7 @@ var style = [
 	"blog post"
 ];
 		
-var topic = [
+var topicList = [
 	"dogs",
 	"nuclear power",
 	"table-top roleplaying games",
@@ -124,7 +124,7 @@ var topic = [
 	
 ]
 
-var targetAudience = [
+var targetAudienceList = [
 	"children",
 	"your congressman",
 	"middle-aged mothers",
@@ -190,7 +190,7 @@ var targetAudience = [
 	
 ]
 
-var tone = [
+var toneList = [
 	"absurd",
 	"accusatory",
 	"admiring",
@@ -316,9 +316,82 @@ var tone = [
 	"worried"
 	
 ]
+
+var styleLabel = "Write a ";
+var topicLabel = " about "
+var targetAudienceLabel = " written for ";
+var toneLabel1 = " in a "
+var toneLabel2 = " tone."
+
+var toneOn = false;
+var audienceOn = false;
+
+var style;
+var topic;
+var audience;
+var tone;
+var sentence;
+
+function concatenateFull(){
+	style = randomStyle();
+	
+	var firstLetter = style.substring(0,1).toLowerCase();
+	if (firstLetter == "a" || firstLetter == "e" || firstLetter == "i" || firstLetter == "o" || firstLetter == "u"){
+		styleLabel = "Write an ";
+	} else {
+		styleLabel = "Write a ";
+	}
+	
+	topic = randomTopic();
+	
+	audience = randomTargetAudience();
+	
+	tone = randomTone();
+	firstLetter = tone.substring(0,1).toLowerCase();
+	if (firstLetter == "a" || firstLetter == "e" || firstLetter == "i" || firstLetter == "o" || firstLetter == "u"){
+		toneLabel1 = " in an ";
+	} else {
+		toneLabel1 = " in a ";
+	}
+	
+	if (toneOn && audienceOn){
+		sentence = styleLabel.concat(style, topicLabel, topic, targetAudienceLabel, audience, toneLabel1, tone, toneLabel2);
+		$("#bigP").text(sentence);
+	}else if (audienceOn){
+		var addPeriod = ".";
+		var newAud = audience.concat(addPeriod);
+		sentence = styleLabel.concat(style, topicLabel, topic, targetAudienceLabel, newAud);
+		$("#bigP").text(sentence);
+	}else if (toneOn){
+		sentence = styleLabel.concat(style, topicLabel, topic, toneLabel1, tone, toneLabel2);
+		$("#bigP").text(sentence);
+	}else {
+		var addPeriod = ".";
+		var newTopic = topic.concat(addPeriod);
+		sentence = styleLabel.concat(style, topicLabel, newTopic);
+		$("#bigP").text(sentence);
+	}
+	
+}
+
+function concatenatePartial(){
+	if (toneOn && audienceOn){
+		$("#bigP").text(styleLabel.concat(style, topicLabel, topic, targetAudienceLabel, audience, toneLabel1, tone, toneLabel2));
+	}else if (audienceOn){
+		var addPeriod = ".";
+		var newAud = audience.concat(addPeriod);
+		$("#bigP").text(styleLabel.concat(style, topicLabel, topic, targetAudienceLabel, newAud));
+	}else if (toneOn){
+		$("#bigP").text(styleLabel.concat(style, topicLabel, topic, toneLabel1, tone, toneLabel2));
+	}else {
+		var addPeriod = ".";
+		var newTopic = topic.concat(addPeriod);
+		$("#bigP").text(styleLabel.concat(style, topicLabel, newTopic));
+	}
+}
 		
 function randomStyle(){
-	var chosenStyle = style[(parseInt(Math.random() * style.length))];
+	var chosenStyle = styleList[(parseInt(Math.random() * styleList.length))];
 	var firstLetter = chosenStyle.substring(0,1).toLowerCase();
 	if (firstLetter == "a" || firstLetter == "e" || firstLetter == "i" || firstLetter == "o" || firstLetter == "u"){
 		$("#styleLabel").text("You are to write an:");
@@ -329,17 +402,17 @@ function randomStyle(){
 }
 		
 function randomTopic(){
-	var chosenTopic = topic[(parseInt(Math.random() * topic.length))];
+	var chosenTopic = topicList[(parseInt(Math.random() * topicList.length))];
 	return chosenTopic;
 }
 
 function randomTargetAudience(){
-	var chosenTargetAudience = targetAudience[(parseInt(Math.random() * targetAudience.length))];
+	var chosenTargetAudience = targetAudienceList[(parseInt(Math.random() * targetAudienceList.length))];
 	return chosenTargetAudience;
 }
 
 function randomTone(){
-	var chosenTone = tone[(parseInt(Math.random() * tone.length))];
+	var chosenTone = toneList[(parseInt(Math.random() * toneList.length))];
 	var firstLetter = chosenTone.substring(0,1).toLowerCase();
 	if (firstLetter == "a" || firstLetter == "e" || firstLetter == "i" || firstLetter == "o" || firstLetter == "u"){
 		$("#toneLabel1").text("in an");
@@ -349,45 +422,48 @@ function randomTone(){
 	return chosenTone;
 }
 
-function randomizeAll(){
-	$("#style").text(randomStyle());
-	$("#topic").text(randomTopic());
-	$("#targetAudience").text(randomTargetAudience());
-	$("#tone").text(randomTone());
-}
-
 function toggleTargetAudience(){
-	var x = document.getElementById("targetAudienceBigDiv");
-	if (x.style.display === "none"){
-		x.style.display = "block";
-	} else {
-		x.style.display = "none";
+	if (audienceOn){
+		audienceOn = false;
+		$("#toggle").css('background-color', 'red');
+		$("#toggle").text("Target Audience Off");
+	}else {
+		audienceOn = true;
+		$("#toggle").css('background-color', 'green');
+		$("#toggle").text("Target Audience On");
 	}
 }
 
 function toggleTone(){
-	var x = document.getElementById("toneBigDiv");
-	if (x.style.display === "none"){
-		x.style.display = "block";
-	} else {
-		x.style.display = "none";
+	if (toneOn){
+		toneOn = false;
+		$("#toggleTone").css('background-color', 'red');
+		$("#toggleTone").text("Tone Off");
+	}else {
+		toneOn = true;
+		$("#toggleTone").css('background-color', 'green');
+		$("#toggleTone").text("Tone On");
 	}
-}
+}	
 		
+//MAKE TOGGLE BUTTONS CHANGE COLORS
 $(document).ready(function() {
-	randomizeAll();
-	document.getElementById("targetAudienceBigDiv").style.display = "none";
-	document.getElementById("toneBigDiv").style.display = "none";
+	$("#toggle").text("Target Audience Off");
+	$("#toggleTone").text("Tone Off");
+	
+	concatenateFull();
 	
 	$("#randomize").click(function() {
-		randomizeAll();
+		concatenateFull();
 	});
 	
 	$("#toggle").click(function() {
 		toggleTargetAudience();
+		concatenatePartial();
 	});
 	
 	$("#toggleTone").click(function() {
 		toggleTone();
+		concatenatePartial();
 	});
 });
